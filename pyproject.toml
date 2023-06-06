@@ -1,0 +1,18 @@
+[project]
+name = "spoiltracker"
+version = "0.0.8"
+authors = [
+  { name="Trevor Bloomfield", email="bloomfieldtm@gmail.com" },
+]
+description = "A Simple Expiry Management System"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/psibir/spoiltracker"
+"Bug Tracker" = "https://github.com/psibir/spoilertracker/issues"
