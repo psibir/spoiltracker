@@ -95,7 +95,7 @@ expiry_tracker = ExpiryTracker()
 expiry_tracker.run(csv_file="sku_list.csv", production_date="2023-06-01", days=5, remove_expired=True)
 ```
 
-### Shelf Life Data
+## Shelf Life Data
 
 Spoiltracker requires shelf life data to calculate expiration dates. By default, it expects a CSV file named "shelflife.csv" in the same directory as the script or package using Spoiltracker. The file should have the following columns: SKU, Name, Brand, Shelf Life (in days).
 
@@ -135,7 +135,7 @@ By running the script with different combinations of these functionalities and a
 
 ## Methods
 
-Spoiltracker provides the following functionality:
+Spoiltracker provides the following methods:
 
 ### Load Shelf Life Data
 
