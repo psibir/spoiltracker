@@ -30,7 +30,36 @@ By utilizing Spoiltracker in deli and cheese counters, businesses can:
 
 ## Installation
 
-The package can be installed using pip:
+To install SpoilerTracker, follow these steps:
+
+1. Clone the repository from GitHub:
+
+   ```shell
+   git clone https://github.com/psibir/spoiltracker.git
+   ```
+
+2. Navigate to the `spoilertracker/src` directory:
+
+   ```shell
+   cd spoilertracker/src
+   ```
+
+3. Install the required dependencies. It is recommended to use a virtual environment:
+
+   ```shell
+   python -m venv .venv      # Create a virtual environment (optional)
+   source env/bin/activate  # Activate the virtual environment (optional)
+   ```
+
+4. Run the `spoilertracker.py` script:
+
+   ```shell
+   python spoilertracker.py
+   ```
+
+   This will execute the SpoilerTracker program.
+
+The package can be also be installed using pip:
 
 ```shell
 pip install spoiltracker
