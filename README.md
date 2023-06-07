@@ -48,7 +48,7 @@ To install Spoiltracker, follow these steps:
 
    ```shell
    python -m venv .venv      # Create a virtual environment (optional)
-   source env/bin/activate  # Activate the virtual environment (optional)
+   source .venv/bin/activate  # Activate the virtual environment (optional)
    ```
 
 4. Run the `spoiltracker.py` script:
