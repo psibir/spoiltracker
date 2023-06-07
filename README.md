@@ -57,9 +57,9 @@ To install Spoiltracker, follow these steps:
    python spoiltracker.py
    ```
 
-   This will execute the SpoilerTracker program.
+   This will execute the SpoilerTracker script.
 
-The package can be also be installed using pip:
+The package can also be installed using pip:
 
 ```shell
 pip install spoiltracker
