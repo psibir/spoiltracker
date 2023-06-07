@@ -133,9 +133,9 @@ expiry_tracker = ExpiryTracker(shelf_life_file="custom_shelflife.csv")
 
 By running the script with different combinations of these functionalities and adjusting the command-line options accordingly, you can effectively manage product expiration dates, generate reports, and maintain an up-to-date history of your products.
 
-## Methods
+## Features
 
-Spoiltracker provides the following methods:
+Spoiltracker provides the following features:
 
 ### Load Shelf Life Data
 
