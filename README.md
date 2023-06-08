@@ -111,7 +111,7 @@ You can customize the shelf life file path by providing it when creating an inst
 expiry_tracker = ExpiryTracker(shelf_life_file="custom_shelflife.csv")
 ```
 
-## Methods of the ExpiryTracker Class
+## Functionality
 
 - Load Shelf Life Data:
   - The script automatically loads the shelf life data from the `shelflife.csv` file.
@@ -133,9 +133,9 @@ expiry_tracker = ExpiryTracker(shelf_life_file="custom_shelflife.csv")
 
 By running the script with different combinations of these functionalities and adjusting the command-line options accordingly, you can effectively manage product expiration dates, generate reports, and maintain an up-to-date history of your products.
 
-## Features
+## Methods
 
-Spoiltracker provides the following features:
+The `ExpiryTracker` Class contains the folloowing methods:
 
 ### Load Shelf Life Data
 
