@@ -1,0 +1,7 @@
+## TODO
+
+- Add Testing
+- Add Batch column, default is 1
+- import multiple `{sku_list}.csv` with date defined by filename
+- rewrite function names to be consistent
+- rewrite classes
