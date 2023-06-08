@@ -20,7 +20,3 @@
 ## v.0.8
 
 - Released as PyPi Package
-
-## TODO
-
-- Add Testing
