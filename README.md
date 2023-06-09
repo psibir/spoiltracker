@@ -14,7 +14,7 @@ Spoiltracker is useful for businesses that deal with perishable products and nee
 - Remove expired entries from the history file to keep the record up to date.
 - Clear the history file when necessary.
 
-## Business Use Case: Deli and Cheese Counters Spoilage Mitigation
+## Business Use Case: Cheese Counter Spoilage Mitigation
 
 Spoiltracker is a valuable tool for deli and cheese counters, as well as any industry where spoilage mitigation is crucial. It helps track the expiration dates of perishable products, such as deli meats, cheeses, and other fresh foods, allowing businesses to effectively manage inventory, reduce waste, and ensure product quality and safety.
 
@@ -190,3 +190,11 @@ See [Contributing Guidelines](/CONTRIBUTING).
 ## License
 
 See [MIT License](/LICENSE).
+
+## Questions?
+
+If you have any questions about the project, you can reach out to me via email or GitHub with the information below:
+
+[GitHub](https://www.github.com/psibir)
+
+
