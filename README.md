@@ -128,7 +128,7 @@ spoiltracker --table
 
 This command will generate the expiry report and save it as `./output/expiryreport.txt`. The text file will contain a nicely formatted table with the SKUs, names, brands, and expiration dates of the products that fall within the specified threshold.
 
-## Method Description
+## Method Descriptions
 
 The SpoilTracker package provides the following methods:
 
@@ -186,3 +186,7 @@ Make sure to install these dependencies before using SpoilTracker.
 ## Contributions
 
 See [Contributions](/CONTRIBUTIONS).
+
+## License
+
+See [License](/LICENSE)].
