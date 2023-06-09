@@ -183,10 +183,10 @@ SpoilTracker has the following dependencies:
 
 Make sure to install these dependencies before using SpoilTracker.
 
-## Contributions
+## Contributing
 
-See [Contributions](/CONTRIBUTIONS).
+See [Contributing Guidelines](/CONTRIBUTING).
 
 ## License
 
-See [License](/LICENSE).
+See [MIT License](/LICENSE).
