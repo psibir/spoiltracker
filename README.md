@@ -88,10 +88,10 @@ To use the Expiry Tracker tool, run the script with the desired command-line fla
 1. Process a single CSV file:
 
    ```bash
-   python spoiltracker.py --csv_file data.csv --production_date 2023-06-01 --days 5
+   python spoiltracker.py --csv_file data.csv --production_date 2023-06-01
    ```
 
-2. Generate an expiry report based on existing history data:
+2. Generate an expiry report based on existing history data on products expiring in 7 days:
 
    ```bash
    python spoiltracker.py --days 7
