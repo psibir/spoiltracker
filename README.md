@@ -1,6 +1,6 @@
 # spoiltracker
 
-![spoiltracker logo](/spoiltracker_logo.png)
+![spoiltracker logo](https://github.com/psibir/psibir.github.io/blob/main/assets/images/spoiltracker_logo.png?raw=true)
 
 Spoiltracker is a Python package that helps track the expiration dates of products. It calculates expiration dates based on the production dates and shelf life information and generates an expiry report for products that are approaching their expiration dates.
 
