@@ -88,31 +88,31 @@ To use the Expiry Tracker tool, run the script with the desired command-line fla
 1. Process a single CSV file:
 
    ```bash
-   python expiry_tracker.py --csv_file data.csv --production_date 2023-06-01 --days 5
+   python spoiltracker.py --csv_file data.csv --production_date 2023-06-01 --days 5
    ```
 
 2. Generate an expiry report based on existing history data:
 
    ```bash
-   python expiry_tracker.py --days 7
+   python spoiltracker.py --days 7
    ```
 
 3. Clear expired entries and the expiry report:
 
    ```bash
-   python expiry_tracker.py --clear-expired
+   python spoiltracker.py --clear-expired
    ```
 
 4. Batch process files in a directory:
 
    ```bash
-   python expiry_tracker.py --batch ./examples/batch/
+   python spoiltracker.py --batch ./examples/batch/
    ```
 
 5. Output a pretty-printed expiry report for products expiring within 10 days:
 
    ```bash
-   python expiry_tracker.py --table --days 10
+   python spoiltracker.py --table --days 10
    ```
 
 ## Method Descriptions
