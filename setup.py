@@ -8,7 +8,7 @@ setuptools.setup(
     version = "0.0.9",
     author = "psibir",
     author_email = "bloomfieldtm@gmail.com",
-    description = "Simple Product Expiration Date Management",
+    description = "A Simple Product Expiration Date Management Tool",
     long_description = long_description,
     long_description_content_type = "text/markdown",
     url = "https://github.com/psibir/spoiltracker",

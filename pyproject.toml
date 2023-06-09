@@ -4,7 +4,7 @@ version = "0.0.9"
 authors = [
   { name="Trevor Bloomfield", email="bloomfieldtm@gmail.com" },
 ]
-description = "A Simple Expiry Management System"
+description = "A Simple Product Expiration Date Management Tool"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
