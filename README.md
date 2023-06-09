@@ -117,7 +117,7 @@ To use the Expiry Tracker tool, run the script with the desired command-line fla
 
 ## Method Descriptions
 
-The SpoilTracker package provides the following methods:
+The SpoilTracker package provides the following methods in the `ExpiryTracker` Class:
 
 - `load_shelf_life_data()`: Loads the shelf life data from the shelf life file.
 - `calculate_expiration_date(production_date, shelf_life)`: Calculates the expiration date based on the production date and shelf life.
