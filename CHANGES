@@ -23,6 +23,6 @@
 
 ## v0.0.9
 
-- Added option to import multiple `{sku_list}.csv` with date defined by filename
-- renamed methods to be consistent (breaks compatibility with oler versions)
-- Add option to export a prettyprinted `expiryreport.txt`
+- Added `--batch` option to batch import multiple `{sku_list}.csv` with date defined by filename
+- Renamed methods to be consistent (breaks compatibility with older versions)
+- Added `--table` option to export a prettyprinted `expiryreport.txt`
