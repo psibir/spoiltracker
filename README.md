@@ -38,18 +38,18 @@ To install Spoiltracker, follow these steps:
    git clone https://github.com/psibir/spoiltracker.git
    ```
 
-2. Navigate to the `spoiltracker/src` directory:
-
-   ```shell
-   cd spoiltracker/src
-   ```
-
-3. Create a virtual environment and install the required dependencies:
+2. Create a virtual environment and install the required dependencies:
 
    ```shell
    python -m venv .venv
    source .venv/bin/activate
    pip install -r requirements.txt
+   ```
+
+3. Navigate to the `spoiltracker/src` directory:
+
+   ```shell
+   cd spoiltracker/src
    ```
 
 4. Run the `spoiltracker.py` script:
