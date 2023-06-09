@@ -83,7 +83,7 @@ Note: The tool can be run with or without the `--csv_file` and `--production_dat
 
 To use the Expiry Tracker tool, run the script with the desired command-line flags.
 
-## Examples:
+## Examples
 
 1. Process a single CSV file:
 
