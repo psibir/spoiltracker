@@ -68,65 +68,52 @@ pip install spoiltracker
 
 ## Usage
 
-### Single CSV Processing
+The Spoiltracker tool provides various command-line flags to customize its behavior. These flags allow you to specify input files, set thresholds, clear data, and control the output. Here are the available command-line flags:
 
-To process a single CSV file, use the `--csv_file` and `--production_date` arguments. Specify the path to the CSV file and the production date in the format `YYYY-MM-DD`.
+- `--csv_file`: Specifies the path to the CSV file containing SKUs. This file should contain SKU data for processing.
+- `--production_date`: Specifies the production date in the format YYYY-MM-DD. This flag is used in conjunction with `--csv_file` to process the SKUs with the given production date.
+- `--days`: Sets the threshold for the number of days until expiration. The default value is 3. SKUs expiring within this number of days will be included in the report.
+- `--clear-expired`: If provided, this flag removes expired entries from the history.csv file and clears the expiry report file.
+- `--output-dest`: Specifies the destination file for the expiry report. The report will be saved in the specified file. If not provided, the default output file is used.
+- `--clear-history`: If provided, this flag clears the history file, removing all the recorded SKU data.
+- `--batch`: Specifies the directory containing files with SKUs to batch process. The files must be named in the format YYYY-MM-DD, representing the production date for each batch.
+- `--table`: If provided, this flag outputs a pretty-printed expiry report as expiryreport.txt.
 
-```bash
-spoiltracker --csv_file path/to/file.csv --production_date 2023-06-01
-```
+Note: The tool can be run with or without the `--csv_file` and `--production_date` flags. If these flags are not provided, the tool generates an expiry report based on existing history data.
 
-This command will process the specified CSV file, calculate the expiration dates based on the shelf life data, and append the results to the history file.
+To use the Expiry Tracker tool, run the script with the desired command-line flags.
 
-### Batch Processing
+## Examples:
 
-To batch process multiple CSV files, place the files in a directory and use the `--batch` argument to specify the directory path. The files in the directory must be named in the format `YYYY-MM-DD.csv`, representing the production dates.
+1. Process a single CSV file:
 
-```bash
-spoiltracker --batch path/to/directory
-```
+   ```bash
+   python expiry_tracker.py --csv_file data.csv --production_date 2023-06-01 --days 5
+   ```
 
-SpoilTracker will process each CSV file in the batch, calculate the expiration dates, and append the results to the history file.
+2. Generate an expiry report based on existing history data:
 
-### Expiry Report
+   ```bash
+   python expiry_tracker.py --days 7
+   ```
 
-To generate an expiry report, use the `--days` argument to set the threshold for the number of days until expiration. By default, SpoilTracker uses a threshold of 3 days. The expiry report includes the SKUs, names, brands, and expiration dates of the products that fall within the specified threshold.
+3. Clear expired entries and the expiry report:
 
-```bash
-spoiltracker --days 5
-```
+   ```bash
+   python expiry_tracker.py --clear-expired
+   ```
 
-The expiry report will be saved in the default output file `./output/expiryreport.csv`. You can also specify a custom output file using the `--output-dest` argument.
+4. Batch process files in a directory:
 
-### Clearing Expired Entries
+   ```bash
+   python expiry_tracker.py --batch ./examples/batch/
+   ```
 
-If you want to remove expired entries from the history file and clear the expiry report file, use the `--clear-expired` flag.
+5. Output a pretty-printed expiry report for products expiring within 10 days:
 
-```bash
-spoiltracker --clear-expired
-```
-
-This command will remove expired entries from the history file and clear the expiry report file.
-
-### Clearing History File
-
-To clear the history file, use the `--clear-history` flag.
-
-```bash
-spoiltracker --clear-history
-```
-
-This command will clear the history file, removing all entries.
-
-### Outputting a Pretty-Printed Expiry Report
-
-To output a pretty-printed expiry report as a text file, use the `--table` flag.
-
-```bash
-spoiltracker --table
-```
-
-This command will generate the expiry report and save it as `./output/expiryreport.txt`. The text file will contain a nicely formatted table with the SKUs, names, brands, and expiration dates of the products that fall within the specified threshold.
+   ```bash
+   python expiry_tracker.py --table --days 10
+   ```
 
 ## Method Descriptions
 
@@ -155,9 +142,9 @@ expiry_tracker = ExpiryTracker()
 expiry_tracker.run(csv_file="sku_list.csv", production_date="2023-06-01", days=5, remove_expired=True)
 ```
 
-## Customize Shelf Life Data
+## How To Customize
 
-Spoiltracker requires shelf life data to calculate expiration dates. By default, it expects a CSV file named "shelflife.csv" in the `./csv` directory. The file should have the following columns: SKU, Name, Brand, "Shelf Life" (in days).
+Spoiltracker requires shelf life data to calculate expiration dates. You can load youre own csv file of SKUs, products, and their shelf life and keep track of daily production. By default, it expects a CSV file named "shelflife.csv" in the `./csv` directory. The file should have the following columns: SKU, Name, Brand, "Shelf Life" (in days).
 
 ```csv
 SKU,Name,Brand,Shelf Life
@@ -180,8 +167,6 @@ SpoilTracker has the following dependencies:
 - `os`: For working with file paths and directories.
 - `datetime`, `timedelta`: For working with dates and calculating expiration dates.
 - `tabulate`: For generating formatted tables.
-
-Make sure to install these dependencies before using SpoilTracker.
 
 ## License
 
