@@ -196,5 +196,3 @@ See [MIT License](/LICENSE).
 If you have any questions about the project, you can reach out to me via email or GitHub with the information below:
 
 [GitHub](https://www.github.com/psibir)
-
-
