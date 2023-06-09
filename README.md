@@ -44,11 +44,12 @@ To install Spoiltracker, follow these steps:
    cd spoiltracker/src
    ```
 
-3. Install the required dependencies. It is recommended to use a virtual environment:
+3. Create a virtual environment and install the required dependencies:
 
    ```shell
-   python -m venv .venv      # Create a virtual environment (optional)
-   source .venv/bin/activate  # Activate the virtual environment (optional)
+   python -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
    ```
 
 4. Run the `spoiltracker.py` script:
@@ -67,22 +68,81 @@ pip install spoiltracker
 
 ## Usage
 
-Spoiltracker can be used from the command line or integrated into other Python scripts.
+### Single CSV Processing
 
-### Command Line Usage
+To process a single CSV file, use the `--csv_file` and `--production_date` arguments. Specify the path to the CSV file and the production date in the format `YYYY-MM-DD`.
 
-To use Spoiltracker from the command line, run the following command:
-
-```shell
-python -m spoiltracker [csv_file] [production_date] [--days DAYS] [--remove-expired] [--expiry-report-dest FILE] [--clear-history]
+```bash
+spoiltracker --csv_file path/to/file.csv --production_date 2023-06-01
 ```
 
-- `[csv_file]` (optional): The path to the CSV file containing the product data. If not provided, Spoiltracker will generate an expiry report based on the existing history file.
-- `[production_date]` (optional): The production date in the format "YYYY-MM-DD". If not provided, Spoiltracker will generate an expiry report based on the existing history file.
-- `--days DAYS` (optional): The threshold for the number of days until expiration. Default is 3 days.
-- `--remove-expired` (optional): Flag to remove expired entries from the history file and clear the expiry report file.
-- `--expiry-report-dest FILE` (optional): Destination file for the expiry report. If not provided, the default file "expiryreport.csv" will be used.
-- `--clear-history` (optional): Flag to clear the history file.
+This command will process the specified CSV file, calculate the expiration dates based on the shelf life data, and append the results to the history file.
+
+### Batch Processing
+
+To batch process multiple CSV files, place the files in a directory and use the `--batch` argument to specify the directory path. The files in the directory must be named in the format `YYYY-MM-DD.csv`, representing the production dates.
+
+```bash
+spoiltracker --batch path/to/directory
+```
+
+SpoilTracker will process each CSV file in the batch, calculate the expiration dates, and append the results to the history file.
+
+### Expiry Report
+
+To generate an expiry report, use the `--days` argument to set the threshold for the number of days until expiration. By default, SpoilTracker uses a threshold of 3 days. The expiry report includes the SKUs, names, brands, and expiration dates of the products that fall within the specified threshold.
+
+```bash
+spoiltracker --days 5
+```
+
+The expiry report will be saved in the default output file `./output/expiryreport.csv`. You can also specify a custom output file using the `--output-dest` argument.
+
+### Clearing Expired Entries
+
+If you want to remove expired entries from the history file and clear the expiry report file, use the `--clear-expired` flag.
+
+```bash
+spoiltracker --clear-expired
+```
+
+This command will remove expired entries from the history file and clear the expiry report file.
+
+### Clearing History File
+
+To clear the history file, use the `--clear-history` flag.
+
+```bash
+spoiltracker --clear-history
+```
+
+This command will clear the history file, removing all entries.
+
+### Outputting a Pretty-Printed Expiry Report
+
+To output a pretty-printed expiry report as a text file, use the `--table` flag.
+
+```bash
+spoiltracker --table
+```
+
+This command will generate the expiry report and save it as `./output/expiryreport.txt`. The text file will contain a nicely formatted table with the SKUs, names, brands, and expiration dates of the products that fall within the specified threshold.
+
+## Method Description
+
+The SpoilTracker package provides the following methods:
+
+- `load_shelf_life_data()`: Loads the shelf life data from the shelf life file.
+- `calculate_expiration_date(production_date, shelf_life)`: Calculates the expiration date based on the production date and shelf life.
+- `append_to_history(data)`: Appends data to the history file.
+- `append_to_expiry_report(data, days, output_dest=None)`: Appends data to the expiry report file for products that fall within the specified threshold.
+- `sort_expiry_report(output_dest)`: Sorts the expiry report file by expiration date.
+- `generate_expiry_report(days, output_dest=None)`: Generates the expiry report for products that fall within the specified threshold.
+- `clear_expired_entries()`: Removes expired entries from the history file and clears the expiry report file.
+- `clear_history_file()`: Clears the history file.
+- `process_csv(csv_file_path, prod_date)`: Processes a CSV file, calculates expiration dates, and returns the processed data.
+- `print_table(output_dest=None, show_console=False)`: Prints a pretty-formatted table of the expiry report and saves it as a text file.
+- `run(csv_file=None, production_date=None, days=3, clear_expired=False, output_dest=None, clear_history=False, print_table=False)`: Runs the SpoilTracker functionality based on the provided arguments.
 
 ### Python Script Integration
 
@@ -95,9 +155,9 @@ expiry_tracker = ExpiryTracker()
 expiry_tracker.run(csv_file="sku_list.csv", production_date="2023-06-01", days=5, remove_expired=True)
 ```
 
-## Shelf Life Data
+## Customize Shelf Life Data
 
-Spoiltracker requires shelf life data to calculate expiration dates. By default, it expects a CSV file named "shelflife.csv" in the same directory as the script or package using Spoiltracker. The file should have the following columns: SKU, Name, Brand, Shelf Life (in days).
+Spoiltracker requires shelf life data to calculate expiration dates. By default, it expects a CSV file named "shelflife.csv" in the `./csv` directory. The file should have the following columns: SKU, Name, Brand, "Shelf Life" (in days).
 
 ```csv
 SKU,Name,Brand,Shelf Life
@@ -111,77 +171,17 @@ You can customize the shelf life file path by providing it when creating an inst
 expiry_tracker = ExpiryTracker(shelf_life_file="custom_shelflife.csv")
 ```
 
-## Functions
+## Dependencies
 
-- Load Shelf Life Data:
-  - The script automatically loads the shelf life data from the `shelflife.csv` file.
+SpoilTracker has the following dependencies:
 
-- Process CSV File:
-  - Specify the input CSV file and the production date using the `--csv-file` and `--production-date` options.
-  - The script calculates the expiration dates for the products and writes the data to the history file.
+- `argparse`: For parsing command-line arguments.
+- `csv`: For reading and writing CSV files.
+- `os`: For working with file paths and directories.
+- `datetime`, `timedelta`: For working with dates and calculating expiration dates.
+- `tabulate`: For generating formatted tables.
 
-- Generate Expiry Report:
-  - By default, the script generates an expiry report for products expiring within the next 3 days.
-  - Use the `--days` option to specify a different threshold for the number of days until expiration.
-  - The report is saved in the `expiryreport.csv` file (or a custom destination if specified).
-
-- Remove Expired Entries:
-  - Use the `--remove-expired` option to remove expired entries from the history file and clear the expiry report file.
-
-- Clear History File:
-  - Use the `--clear-history` option to clear the history file.
-
-By running the script with different combinations of these functionalities and adjusting the command-line options accordingly, you can effectively manage product expiration dates, generate reports, and maintain an up-to-date history of your products.
-
-## Features
-
-Spoiltracker provides the following features:
-
-### Load Shelf Life Data
-
-The `load_shelf_life_data` method loads the shelf life data from the shelf life file. It
-
- reads the CSV file and stores the data in memory for later use.
-
-### Calculate Expiration Date
-
-The `calculate_expiration_date` method calculates the expiration date based on the production date and shelf life information. It takes the production date and the shelf life as input and returns the expiration date.
-
-### Write to History CSV
-
-The `write_to_history_csv` method writes data to the history CSV file. It takes a list of data as input, appends it to the existing file, and creates a new file if it doesn't exist.
-
-### Write to Expiry Report
-
-The `write_to_expiry_report` method generates an expiry report based on the data provided. It compares the expiration dates with the current date and the specified threshold (number of days). It writes the report to the expiry report file, appending new entries and creating a new file if it doesn't exist.
-
-### Sort Expiry Report
-
-The `sort_expiry_report` method is responsible for sorting the entries in the expiry report based on the expiration date. It takes the `expiry_report_dest` parameter, which represents the path to the expiry report file.
-
-### Generate Expiry Report
-
-The `generate_expiry_report` method generates an expiry report based on the existing history file. It reads the history file, filters the entries that are approaching their expiration dates within the specified number of days, and writes the report to the expiry report file.
-
-### Remove Expired Entries
-
-The `remove_expired_entries` method removes expired entries from the history file. It reads the expiry report file to get the SKUs of expired products and filters out those entries from the history file. It also clears the expiry report file.
-
-### Clear History File
-
-The `clear_history_file` method clears the history file by removing all its contents.
-
-### Process CSV
-
-The `process_csv` method processes the provided CSV file and generates the history data. It reads the CSV file, retrieves the shelf life information for each SKU, calculates the expiration dates, and writes the data to the history file. It returns the history data.
-
-### Run
-
-The `run` method is the main entry point for using Spoiltracker. It accepts command line arguments or direct parameters and executes the necessary functions based on the provided options.
-
-### Error Handling
-
-Spoiltracker provides basic error handling for file not found errors and invalid date formats. If the shelf life file, history file, or expiry report file is not found, an error message is displayed. If an invalid date format is encountered in the CSV files, an error message is displayed as well.
+Make sure to install these dependencies before using SpoilTracker.
 
 ## Contributions
 

@@ -1,6 +1,6 @@
 [project]
 name = "spoiltracker"
-version = "0.0.8"
+version = "0.0.9"
 authors = [
   { name="Trevor Bloomfield", email="bloomfieldtm@gmail.com" },
 ]

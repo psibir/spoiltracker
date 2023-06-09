@@ -5,10 +5,10 @@ with open("README.md", "r", encoding = "utf-8") as fh:
 
 setuptools.setup(
     name = "spoiltracker",
-    version = "0.0.8",
+    version = "0.0.9",
     author = "psibir",
     author_email = "bloomfieldtm@gmail.com",
-    description = "Simple Product Expiry Management",
+    description = "Simple Product Expiration Date Management",
     long_description = long_description,
     long_description_content_type = "text/markdown",
     url = "https://github.com/psibir/spoiltracker",
