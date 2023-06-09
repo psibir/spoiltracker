@@ -189,4 +189,4 @@ See [Contributions](/CONTRIBUTIONS).
 
 ## License
 
-See [License](/LICENSE)].
+See [License](/LICENSE).
