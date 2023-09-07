@@ -3,3 +3,9 @@
 
 - Add Testing
 - Rewrite classes
+- Add Feature: multiple batches in one production day (IDEA: maybe use 24-hr timestamp?)
+- GUI/TUI
+- Web interface?
+- add data validation for product code to accept common standard UPC format
+- allow user to import/export custom UPCs
+
